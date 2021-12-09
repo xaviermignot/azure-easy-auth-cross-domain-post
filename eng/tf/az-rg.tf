@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-${var.project}"
+  name     = "rg-${local.suffix}"
   location = var.location
 }

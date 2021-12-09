@@ -1,5 +1,5 @@
 resource "azuread_application" "easy_auth" {
-  display_name = "app-${var.project}"
+  display_name = "app-${local.suffix}"
 
   api {
     requested_access_token_version = 2
@@ -42,26 +42,6 @@ resource "azuread_application" "easy_auth" {
 
 resource "azuread_application_password" "easy_auth" {
   application_object_id = azuread_application.easy_auth.object_id
-}
-
-resource "azuread_service_principal" "easy_auth" {
-  application_id               = azuread_application.easy_auth.application_id
-  app_role_assignment_required = true
-}
-
-resource "azuread_group" "easy_auth" {
-  display_name     = "Group for easy auth in Web App web-${var.project}"
-  security_enabled = true
-}
-
-resource "azuread_app_role_assignment" "easy_auth" {
-  for_each = {
-    "group" = azuread_group.easy_auth.object_id
-  }
-
-  app_role_id         = "00000000-0000-0000-0000-000000000000"
-  principal_object_id = each.value
-  resource_object_id  = azuread_service_principal.easy_auth.object_id
 }
 
 data "azuread_client_config" "current" {}
