@@ -1,8 +1,0 @@
-{
-    "rest-client.environmentVariables": {
-        "$shared": {},
-        "local": {
-            "baseUrl": "https://localhost:7201"
-        }
-    }
-}
