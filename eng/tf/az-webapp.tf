@@ -26,6 +26,20 @@ resource "azurerm_app_service" "api" {
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.ai.instrumentation_key
   }
+
+  auth_settings {
+    enabled = true
+
+    default_provider              = "AzureActiveDirectory"
+    unauthenticated_client_action = "RedirectToLoginPage"
+    issuer                        = "https://sts.windows.net/${data.azuread_client_config.current.tenant_id}"
+    runtime_version               = "v2"
+
+    active_directory {
+      client_id     = azuread_application.easy_auth.application_id
+      client_secret = azuread_application_password.easy_auth.value
+    }
+  }
 }
 
 resource "azurerm_app_service_custom_hostname_binding" "api" {
