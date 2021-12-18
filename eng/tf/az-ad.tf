@@ -46,4 +46,8 @@ resource "azuread_application_password" "easy_auth" {
   application_object_id = azuread_application.easy_auth.object_id
 }
 
+output "aad_app_id" {
+  value = azuread_application.easy_auth.application_id
+}
+
 data "azuread_client_config" "current" {}
