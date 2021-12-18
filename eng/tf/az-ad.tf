@@ -7,8 +7,7 @@ resource "azuread_application" "easy_auth" {
 
   web {
     redirect_uris = [
-      "https://web-${local.suffix}.azurewebsites.net/.auth/login/aad/callback",
-      "https://${local.suffix}-api.${var.dns_zone_name}/.auth/login/aad/callback"]
+      "https://web-${local.suffix}.azurewebsites.net/.auth/login/aad/callback"]
 
     implicit_grant {
       access_token_issuance_enabled = true
