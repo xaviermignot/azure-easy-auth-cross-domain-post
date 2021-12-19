@@ -1,5 +1,5 @@
 resource "random_pet" "suffix" {
-  length = 2
+  length = 1
 }
 
 locals {
