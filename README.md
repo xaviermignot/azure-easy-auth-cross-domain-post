@@ -1,7 +1,7 @@
 # Demo of cross domain POST request issue with Azure App Service and Easy Auth
 
 That's a long title, right ? 🤯  
-This repository contains a demo to illustrate a bug hunting story written in a blog post... that still needs to be written.  
+This repository contains a demo to illustrate a bug hunting story written in a [blog post](https://blog.xmi.fr/posts/app-service-post-cross-domain/).  
 Running this demo will create an App Service protected by Azure AD authentication, deploy a simple API code to it and let you experiment with POST request either from VS Code or from a simple blazor app.
 
 
